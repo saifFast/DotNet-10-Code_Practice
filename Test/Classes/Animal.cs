@@ -7,6 +7,13 @@ namespace Test.Classes
         private string _name;
         private string _category;
 
+        public Animal()
+        {
+            _name = "";
+            _category = "";
+        }
+
+
         public Animal(string name, string category)
         {
             _name = name;
