@@ -1,24 +1,33 @@
-﻿using Test.Interfaces;
-using Test.Classes;
-
-namespace DesignPatterns
+﻿namespace DesignPatterns
 {
-    internal class FactoryPattern
+    public interface IShape
     {
-        public IAnimal GetAnimal(string category)
+
+        void Draw();
+
+    };
+
+    public class Circle : IShape
+    {
+        public void Draw() => Console.WriteLine("Drawing a Circle");
+    }
+
+    public class Rectangle : IShape
+    {
+        public void Draw() => Console.WriteLine("Drawing a Rectangle");
+    }
+
+    public abstract class ShapeFactory
+    {
+        public abstract IShape CreateShape();
+    }
+
+    public class CircleFactory : ShapeFactory
+    {
+        public override IShape CreateShape()
         {
-            var newAnimal = new Animal();
-
-            switch (category)
-            {
-                case "Bird":
-                    newAnimal = new Bird("Penguin", "Mammal", 0);
-                    break;
-                default:
-                    break;
-            }
-
-            return newAnimal;
+            return new Circle();
         }
     }
+
 }
